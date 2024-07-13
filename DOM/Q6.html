@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Change the content of a cell</title>
+</head>
+<body>
+    <table id="myTable" border="1">
+        <tr>
+            <td>Row1 cell1</td>
+            <td>Row1 cell2</td>
+        </tr>
+        <tr>
+            <td>Row2 cell1</td>
+            <td>Row2 cell2</td>
+        </tr>
+        <tr>
+            <td>Row3 cell1</td>
+            <td>Row3 cell2</td>
+        </tr>
+    </table>
+    <form>
+        Row: <input type="number" id="row" min="1" max="3">
+        Column: <input type="number" id="column" min="1" max="2">
+        Content: <input type="text" id="content">
+        <input type="button" onclick="changeContent()" value="Change content">
+    </form>
+
+    <script>
+        function changeContent() {
+            var row = document.getElementById("row").value;
+            var column = document.getElementById("column").value;
+            var content = document.getElementById("content").value;
+
+            // Validate row and column inputs
+            if (row < 1 || row > 3 || column < 1 || column > 2) {
+                alert("Invalid row or column number!");
+                return;
+            }
+
+            // Convert row and column to zero-based index
+            var rowIndex = row - 1;
+            var columnIndex = column - 1;
+
+            // Get the table
+            var table = document.getElementById("myTable");
+
+            // Update the specified cell content
+            table.rows[rowIndex].cells[columnIndex].innerHTML = content;
+        }
+    </script>
+</body>
+</html>

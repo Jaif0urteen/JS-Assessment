@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Set Paragraph Background Color</title>
+    <style>
+        #text {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p id="text">JavaScript Exercises - w3resource</p>
+    <div>
+        <button id="colorButton" onclick="setBackgroundColor()">Set Background Color</button>
+    </div>
+
+    <script>
+        function setBackgroundColor() {
+            var paragraph = document.getElementById('text');
+            paragraph.style.backgroundColor = 'yellow'; // You can change this color to any other color
+        }
+    </script>
+</body>
+</html>

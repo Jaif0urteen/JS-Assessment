@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Create a table with specified content</title>
+    <style type="text/css">
+        body {margin: 30px;}
+    </style>
+</head>
+<body>
+    <form>
+        Rows: <input type="number" id="rows" min="1" required>
+        Columns: <input type="number" id="columns" min="1" required>
+        <input type="button" onclick="createTable()" value="Create the table">
+    </form>
+    <br>
+    <table id="myTable" border="1">
+    </table>
+
+    <script>
+        function createTable() {
+            // Get the number of rows and columns from the input fields
+            var rows = document.getElementById("rows").value;
+            var columns = document.getElementById("columns").value;
+
+            // Get the table element
+            var table = document.getElementById("myTable");
+
+            // Clear any existing rows
+            table.innerHTML = '';
+
+            // Create the rows and columns
+            for (var i = 0; i < rows; i++) {
+                var row = table.insertRow(i);
+                for (var j = 0; j < columns; j++) {
+                    var cell = row.insertCell(j);
+                    cell.innerHTML = 'Row-' + i + ' Column-' + j;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

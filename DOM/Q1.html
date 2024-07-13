@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JS DOM paragraph style</title>
+    <style>
+        /* You can add some initial styling if needed */
+        #text {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <p id="text">JavaScript Exercises - w3resource</p>
+    <div>
+        <button id="jsstyle" onclick="js_style()">Style</button>
+    </div>
+    
+    <script>
+        function js_style() {
+            var textElement = document.getElementById('text');
+            textElement.style.fontFamily = 'Courier New';
+            textElement.style.fontSize = '20px';
+            textElement.style.color = 'blue';
+        }
+    </script>
+</body>
+</html>
