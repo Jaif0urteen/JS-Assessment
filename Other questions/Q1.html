@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition Example</title>
+    <script>
+        // JavaScript code to prompt for two integers and display their sum
+        function calculateSum() {
+            // Prompt for first integer
+            let num1 = prompt("Enter the first integer:");
+            
+            // Convert input to integer, handle NaN (cancel button or invalid input)
+            num1 = parseInt(num1);
+            if (isNaN(num1)) {
+                alert("Invalid input for the first number. Please enter a valid integer.");
+                return;
+            }
+
+            // Prompt for second integer
+            let num2 = prompt("Enter the second integer:");
+
+            // Convert input to integer, handle NaN (cancel button or invalid input)
+            num2 = parseInt(num2);
+            if (isNaN(num2)) {
+                alert("Invalid input for the second number. Please enter a valid integer.");
+                return;
+            }
+
+            // Calculate sum
+            let sum = num1 + num2;
+
+            // Display result in an alert box
+            alert(`The sum of ${num1} and ${num2} is ${sum}`);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="calculateSum()">Calculate Sum</button>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Image On Click</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 50px;
+    }
+    img {
+      width: 300px; /* Adjust the width as needed */
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Click on the Image to Change It</h2>
+  <img id="myImage" src="image1.jpg" onclick="changeImage()" alt="Image" />
+
+  <script>
+    // Array of different image sources
+    const imageSources = [
+      "image2.jpg",
+      "image3.jpg",
+      "image4.jpg",
+      // Add more image URLs as needed
+    ];
+
+    // Function to change the image source
+    function changeImage() {
+      // Get a random index from imageSources array
+      let randomIndex = Math.floor(Math.random() * imageSources.length);
+      // Get the image element by id
+      let imgElement = document.getElementById('myImage');
+      // Set the src attribute to a random image URL
+      imgElement.src = imageSources[randomIndex];
+    }
+  </script>
+</body>
+</html>

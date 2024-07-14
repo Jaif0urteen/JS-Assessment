@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Display Information with document.write()</title>
+</head>
+<body>
+<script>
+  // Displaying information using document.write()
+  document.write("<h2>Browser Information:</h2>");
+  document.write("<p>User Agent: " + navigator.userAgent + "</p>");
+  document.write("<p>Browser Language: " + navigator.language + "</p>");
+
+  document.write("<h2>Screen Resolution:</h2>");
+  document.write("<p>Width: " + screen.width + " pixels</p>");
+  document.write("<p>Height: " + screen.height + " pixels</p>");
+
+  document.write("<h2>Date Page Modified:</h2>");
+  document.write("<p>Last Modified: " + document.lastModified + "</p>");
+</script>
+</body>
+</html>

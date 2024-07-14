@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Animation with Marbles</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  .marble {
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    border-radius: 50%;
+    position: absolute;
+    animation: moveMarble 5s linear infinite;
+    cursor: pointer;
+  }
+
+  @keyframes moveMarble {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-100px); }
+    100% { transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="marble" id="marble1"></div>
+<div class="marble" id="marble2" style="top: 100px;"></div>
+<div class="marble" id="marble3" style="top: 200px;"></div>
+
+<script>
+  // Function to pause animation on hover and resume on mouseout
+  function handleAnimationPause() {
+    const marbles = document.querySelectorAll('.marble');
+
+    marbles.forEach(marble => {
+      marble.addEventListener('mouseover', function() {
+        marble.style.animationPlayState = 'paused';
+      });
+
+      marble.addEventListener('mouseout', function() {
+        marble.style.animationPlayState = 'running';
+      });
+    });
+  }
+
+  handleAnimationPause(); // Call the function to initialize
+
+  // Optionally, you can also use setTimeout to restart the animation after a delay
+  // Uncomment the code below to restart after 5 seconds of pausing
+  /*
+  setTimeout(function() {
+    const marbles = document.querySelectorAll('.marble');
+    marbles.forEach(marble => {
+      marble.style.animationPlayState = 'running';
+    });
+  }, 5000);
+  */
+
+</script>
+
+</body>
+</html>

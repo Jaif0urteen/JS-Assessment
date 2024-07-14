@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visit Counter</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Visit Counter Page!</h1>
+    <img src="https://via.placeholder.com/400x200" alt="Placeholder Image">
+    <p id="visitInfo">Loading visit information...</p>
+  </div>
+
+  <script>
+    // Function to set or update a cookie
+    function setCookie(name, value, days) {
+      let expires = '';
+      if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = '; expires=' + date.toUTCString();
+      }
+      document.cookie = name + '=' + (value || '')  + expires + '; path=/';
+    }
+
+    // Function to get the value of a cookie by name
+    function getCookie(name) {
+      const nameEQ = name + '=';
+      const cookies = document.cookie.split(';');
+      for(let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) === ' ') {
+          cookie = cookie.substring(1, cookie.length);
+        }
+        if (cookie.indexOf(nameEQ) === 0) {
+          return cookie.substring(nameEQ.length, cookie.length);
+        }
+      }
+      return null;
+    }
+
+    // Function to display visit information
+    function displayVisitInfo() {
+      const visitCount = getCookie('visitCount');
+      const lastVisited = getCookie('lastVisited');
+
+      let message = '';
+
+      if (visitCount) {
+        message += 'You have visited ' + visitCount + ' time(s)!';
+        if (lastVisited) {
+          message += ' The last visit was on ' + lastVisited + '.';
+        }
+      } else {
+        message = 'You have never visited before.';
+      }
+
+      document.getElementById('visitInfo').textContent = message;
+
+      // Update visit count and last visited date
+      const currentVisitCount = visitCount ? parseInt(visitCount) + 1 : 1;
+      const currentDate = new Date().toLocaleString();
+      setCookie('visitCount', currentVisitCount, 365); // Set cookie for 1 year
+      setCookie('lastVisited', currentDate, 365); // Set cookie for 1 year
+    }
+
+    // Display visit information when the page loads
+    displayVisitInfo();
+  </script>
+</body>
+</html>

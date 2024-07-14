@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup Form with Validation</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .form-group .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .form-group.error input {
+    border-color: red;
+  }
+  .form-group.success input {
+    border-color: #2ecc71;
+  }
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>Signup Form</h2>
+    <form id="signupForm" onsubmit="return validateForm()">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName">
+        <div class="error-message" id="firstNameError"></div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName">
+        <div class="error-message" id="lastNameError"></div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+        <div class="error-message" id="emailError"></div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    // JavaScript for form validation
+    function validateForm() {
+      const firstName = document.getElementById('firstName');
+      const lastName = document.getElementById('lastName');
+      const email = document.getElementById('email');
+      let isValid = true;
+
+      // Reset all error messages and styles
+      document.querySelectorAll('.error-message').forEach(msg => msg.textContent = '');
+      document.querySelectorAll('.form-group').forEach(group => group.classList.remove('error', 'success'));
+
+      // Validate first name
+      if (firstName.value.trim() === '') {
+        document.getElementById('firstNameError').textContent = 'First name is required';
+        document.getElementById('firstName').parentNode.classList.add('error');
+        isValid = false;
+      } else {
+        document.getElementById('firstName').parentNode.classList.add('success');
+      }
+
+      // Validate last name
+      if (lastName.value.trim() === '') {
+        document.getElementById('lastNameError').textContent = 'Last name is required';
+        document.getElementById('lastName').parentNode.classList.add('error');
+        isValid = false;
+      } else {
+        document.getElementById('lastName').parentNode.classList.add('success');
+      }
+
+      // Validate email
+      if (email.value.trim() === '') {
+        document.getElementById('emailError').textContent = 'Email is required';
+        document.getElementById('email').parentNode.classList.add('error');
+        isValid = false;
+      } else if (!isValidEmail(email.value.trim())) {
+        document.getElementById('emailError').textContent = 'Please enter a valid email address';
+        document.getElementById('email').parentNode.classList.add('error');
+        isValid = false;
+      } else {
+        document.getElementById('email').parentNode.classList.add('success');
+      }
+
+      return isValid;
+    }
+
+    // Function to validate email format
+    function isValidEmail(email) {
+      // Very basic email validation, you can use a more advanced regex if needed
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+  </script>
+</body>
+</html>

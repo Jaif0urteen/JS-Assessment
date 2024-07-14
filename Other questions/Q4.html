@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date and Time Functions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Local Time to UTC Conversion</h2>
+  <button onclick="convertToLocalUTC()">Convert to UTC</button>
+  <div id="localToUTC"></div>
+
+  <h2>Current Date and Time with Timer</h2>
+  <button onclick="startTimer()">Start Timer</button>
+  <div id="currentDateTime"></div>
+
+  <script>
+    // Function to convert local time to UTC
+    function convertToLocalUTC() {
+      let now = new Date();
+      let utcString = now.toISOString();
+      document.getElementById('localToUTC').textContent = `Local Time: ${now}\nUTC Time: ${utcString}`;
+    }
+
+    // Function to display current date and time with timer
+    function startTimer() {
+      updateDateTime(); // Initial call
+      setInterval(updateDateTime, 1000); // Update every second
+    }
+
+    // Helper function to update date and time
+    function updateDateTime() {
+      let now = new Date();
+      document.getElementById('currentDateTime').textContent = now.toLocaleString();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mad Libs Game</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .highlight {
+    background-color: yellow; /* Default highlight color */
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mad Libs Game</h1>
+    <script>
+      // Prompt the user for their name
+      const userName = prompt('Enter your name:');
+      
+      // Prompt the user for 5 words
+      const word1 = prompt('Enter a noun:');
+      const word2 = prompt('Enter an adjective:');
+      const word3 = prompt('Enter another noun:');
+      const word4 = prompt('Enter a verb (past tense):');
+      const word5 = prompt('Enter an adverb:');
+      
+      // Prompt the user for a color
+      const userColor = prompt('Enter a color name or hex value (e.g., blue, #FF0000):');
+      
+      // Display the Mad Libs story with highlighted words
+      document.write(`<p>Hi <span class="highlight" style="background-color: ${userColor};">${userName}</span>, I have a <span class="highlight" style="background-color: ${userColor};">${word1}</span> and it's <span class="highlight" style="background-color: ${userColor};">${word2}</span>! Yesterday, I found a <span class="highlight" style="background-color: ${userColor};">${word3}</span> and <span class="highlight" style="background-color: ${userColor};">${word4}</span> it <span class="highlight" style="background-color: ${userColor};">${word5}</span>. It was so much fun!</p>`);
+    </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slideshow with Navigation Buttons</title>
+  <style>
+    .slideshow-container {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+    }
+    .slideshow-container img {
+      display: none;
+      max-width: 100%;
+      height: auto;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .btn-container button {
+      cursor: pointer;
+      padding: 10px 20px;
+      margin: 0 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+  <img src="image1.jpg" alt="Image 1">
+  <img src="image2.jpg" alt="Image 2">
+  <img src="image3.jpg" alt="Image 3">
+  <img src="image4.jpg" alt="Image 4">
+  <img src="image5.jpg" alt="Image 5">
+</div>
+
+<div class="btn-container">
+  <button id="btn-back" onclick="moveSlide(-1)" style="display: none;">Back</button>
+  <button id="btn-forward" onclick="moveSlide(1)">Forward</button>
+</div>
+
+<script>
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slideshow-container img');
+  const backButton = document.getElementById('btn-back');
+  const forwardButton = document.getElementById('btn-forward');
+
+  function showSlides() {
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    slides[slideIndex].style.display = "block";  
+    
+    // Toggle back and forward button visibility based on slideIndex
+    backButton.style.display = slideIndex === 0 ? "none" : "block";
+    forwardButton.style.display = slideIndex === slides.length - 1 ? "none" : "block";
+  }
+
+  function moveSlide(n) {
+    slideIndex += n;
+    showSlides();
+  }
+
+  showSlides(); // Initial call to display first slide
+</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Hover Effect</title>
+<style>
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .image-container img {
+    width: 300px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+</style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="original_image1.jpg" alt="Original Image 1" id="image1">
+    <img src="original_image2.jpg" alt="Original Image 2" id="image2">
+  </div>
+
+  <script>
+    // JavaScript to handle image swapping
+    const image1 = document.getElementById('image1');
+    const image2 = document.getElementById('image2');
+
+    // Store original image sources
+    const originalSrc1 = image1.src;
+    const originalSrc2 = image2.src;
+
+    // Define new images for hover effect
+    const newImageSrc1 = 'hover_image1.jpg';
+    const newImageSrc2 = 'hover_image2.jpg';
+
+    // Event listeners for image hover and mouse out
+    image1.addEventListener('mouseover', () => {
+      image1.src = newImageSrc1;
+    });
+
+    image1.addEventListener('mouseout', () => {
+      image1.src = originalSrc1;
+    });
+
+    image2.addEventListener('mouseover', () => {
+      image2.src = newImageSrc2;
+    });
+
+    image2.addEventListener('mouseout', () => {
+      image2.src = originalSrc2;
+    });
+  </script>
+</body>
+</html>
+ 

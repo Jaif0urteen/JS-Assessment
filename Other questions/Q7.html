@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Paragraph Style</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <h2>JavaScript Paragraph Manipulation</h2>
+
+  <p>This is the first paragraph.</p>
+  <p>This is the second paragraph.</p>
+
+  <button onclick="insertParagraph()">Insert New Paragraph</button>
+  <button onclick="highlightParagraph()">Highlight New Paragraph</button>
+  <button onclick="resetParagraphStyle()">Reset Style</button>
+
+  <script>
+    // Function to insert a new paragraph between existing paragraphs
+    function insertParagraph() {
+      // Create a new paragraph element
+      let newParagraph = document.createElement('p');
+      newParagraph.textContent = 'This is a new paragraph inserted dynamically.';
+      
+      // Select the second existing paragraph
+      let secondParagraph = document.getElementsByTagName('p')[1];
+      
+      // Insert the new paragraph before the second paragraph
+      secondParagraph.parentNode.insertBefore(newParagraph, secondParagraph.nextSibling);
+    }
+
+    // Function to highlight the newly inserted paragraph
+    function highlightParagraph() {
+      let newParagraph = document.getElementsByTagName('p')[1]; // Select the newly inserted paragraph
+      newParagraph.classList.add('highlight'); // Add the 'highlight' class to change its style
+    }
+
+    // Function to reset the style of the new paragraph
+    function resetParagraphStyle() {
+      let newParagraph = document.getElementsByTagName('p')[1]; // Select the newly inserted paragraph
+      newParagraph.classList.remove('highlight'); // Remove the 'highlight' class to reset its style
+    }
+  </script>
+</body>
+</html>
